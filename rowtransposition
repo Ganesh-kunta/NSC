@@ -1,0 +1,18 @@
+text = input("Enter the text: ").upper()
+if len(text) % 2 != 0:
+    text += "X"
+row1 = ""
+row2 = ""
+for i in range(0, len(text), 2):
+    row1 += text[i]
+    row2 += text[i + 1]
+cipher = row2 + row1
+print("Encrypted Text:", cipher)
+mid = len(cipher) // 2
+row2 = cipher[:mid]
+row1 = cipher[mid:]
+plain = ""
+for i in range(mid):
+    plain += row1[i]
+    plain += row2[i]
+print("Decrypted Text:", plain)
