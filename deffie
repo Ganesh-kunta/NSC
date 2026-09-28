@@ -1,0 +1,14 @@
+p = int(input("Enter prime number p: "))
+g = int(input("Enter primitive root g: "))
+a = int(input("Enter private key of Alice: "))
+b = int(input("Enter private key of Bob: "))
+# Public keys
+A = (g ** a) % p
+B = (g ** b) % p
+print("Alice Public Key:", A)
+print("Bob Public Key:", B)
+# Shared secret key
+key1 = (B ** a) % p
+key2 = (A ** b) % p
+print("Alice Shared Key:", key1)
+print("Bob Shared Key:", key2)
