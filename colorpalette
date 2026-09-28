@@ -1,0 +1,9 @@
+import numpy as np
+import matplotlib.pyplot as plt
+palette = np.arange(256, dtype=np.uint8).reshape(1, 256)
+plt.figure(figsize=(10, 2))
+plt.imshow(palette, cmap='gray', aspect='auto')
+plt.title('8-bit Grayscale Color Palette')
+plt.xticks([0, 64, 128, 192, 255])
+plt.yticks([])
+plt.show()
