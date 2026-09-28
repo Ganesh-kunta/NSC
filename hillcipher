@@ -1,0 +1,25 @@
+text = input("Enter the text: ").upper()
+key = [[2, 3],
+       [3, 4]]
+if len(text) % 2 != 0:
+    text += "X"
+cipher = ""
+for i in range(0, len(text), 2):
+    a = ord(text[i]) - 65
+    b = ord(text[i + 1]) - 65
+    x = (2 * a + 3 * b) % 26
+    y = (3 * a + 4 * b) % 26
+    cipher += chr(x + 65)
+    cipher += chr(y + 65)
+print("Encrypted Text:", cipher)
+inverse = [[22, 3],
+           [3, 24]]
+plain = ""
+for i in range(0, len(cipher), 2):
+    a = ord(cipher[i]) - 65
+    b = ord(cipher[i + 1]) - 65
+    x = (22 * a + 3 * b) % 26
+    y = (3 * a + 24 * b) % 26
+    plain += chr(x + 65)
+    plain += chr(y + 65)
+print("Decrypted Text:", plain)
