@@ -1,0 +1,28 @@
+text = input("Enter the text: ").upper()
+key = input("Enter the key: ").upper()
+newkey = ""
+j = 0
+for i in range(len(text)):
+    if text[i].isalpha():
+        newkey += key[j % len(key)]
+        j += 1
+    else:
+        newkey += text[i]
+
+cipher = ""
+for i in range(len(text)):
+    if text[i].isalpha():
+        x = ((ord(text[i]) - 65) + (ord(newkey[i]) - 65)) % 26
+        cipher += chr(x + 65)
+    else:
+        cipher += text[i]
+
+print("Encrypted Text:", cipher)
+plain = ""
+for i in range(len(cipher)):
+    if cipher[i].isalpha():
+        x = ((ord(cipher[i]) - 65) - (ord(newkey[i]) - 65)) % 26
+        plain += chr(x + 65)
+    else:
+        plain += cipher[i]
+print("Decrypted Text:", plain)
