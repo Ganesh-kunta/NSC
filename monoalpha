@@ -1,0 +1,17 @@
+text = input("Enter the text: ").upper()
+alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+key = "QWERTYUIOPASDFGHJKLZXCVBNM"
+cipher = ""
+for ch in text:
+    if ch.isalpha():
+        cipher += key[alphabet.index(ch)]
+    else:
+        cipher += ch
+print("Encrypted Text:", cipher)
+plain = ""
+for ch in cipher:
+    if ch.isalpha():
+        plain += alphabet[key.index(ch)]
+    else:
+        plain += ch
+print("Decrypted Text:", plain)
