@@ -1,0 +1,22 @@
+from PIL import Image
+import numpy as np
+
+img = Image.open("image.jpg").convert("L")
+matrix = np.array(img)
+
+print("Original Matrix:")
+print(matrix)
+
+# LSB modification
+lsb = matrix.copy()
+lsb = lsb & 254
+
+print("LSB Modified Matrix:")
+print(lsb)
+
+# MSB modification
+msb = matrix.copy()
+msb = msb ^ 128
+
+print("MSB Modified Matrix:")
+print(msb)
