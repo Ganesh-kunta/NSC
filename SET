@@ -1,0 +1,28 @@
+import hashlib
+
+
+order = "Laptop - Rs.50000"
+payment = "Card123456"
+
+
+h1 = hashlib.sha256(order.encode()).hexdigest()
+h2 = hashlib.sha256(payment.encode()).hexdigest()
+
+dual = hashlib.sha256((h1 + h2).encode()).hexdigest()
+
+print("Order Information:", order)
+print("Payment Information:", payment)
+
+print("\nOrder Hash:", h1)
+print("Payment Hash:", h2)
+
+print("\nDual Signature:", dual)
+
+
+check = hashlib.sha256((h1 + h2).encode()).hexdigest()
+
+if dual == check:
+    print("\nSignature Verified")
+    print("Transaction Successful")
+else:
+    print("Transaction Failed")
