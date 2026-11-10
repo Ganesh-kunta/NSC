@@ -1,0 +1,49 @@
+import hashlib
+message=input("Enter a message: ")
+
+h0=0x67452301
+h1=0xEFCDAB89
+h2=0x98BADCFE
+h3=0x10325476
+h4=0xC3D2E1F0
+
+data=message.encode()
+length=len(data)*8
+
+data+=b'\x80'
+
+while len(data)%64!=56:
+    data+=b'\x00'
+
+length_bytes=[]
+for i in range(8):
+    length_bytes.insert(0,length%256)
+    length=length//256
+
+data+=bytes(length_bytes)
+
+print("\nSHA-1 Algorithm")
+print("Original Message:",message)
+print("Message Length:",len(message.encode())*8)
+
+print("\nInitial Hash Values:")
+print(hex(h0))
+print(hex(h1))
+print(hex(h2))
+print(hex(h3))
+print(hex(h4))
+
+print("\nPadding Completed")
+print("Block Size: 512 bits")
+print("Hash Size: 160 bits")
+print("Message Prepared Successfully")
+
+# Generate SHA-1 hash using hashlib
+sha=hashlib.sha1()
+sha.update(message.encode())
+
+hash_value=sha.hexdigest()
+
+print("\nFinal SHA-1 Hash Value:")
+print(hash_value)
+print("Hash Length:",len(hash_value))
